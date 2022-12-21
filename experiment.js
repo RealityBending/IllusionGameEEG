@@ -146,6 +146,9 @@ function create_trial(illusion_name = "Ponzo", type = "updown") {
             on_load: function () {
                 create_marker(marker_position)
             },
+            on_start: function(){
+                (document.body.style.cursor = "none")
+            },
             on_finish: function (data) {
                 document.querySelector("#marker").remove()
                 data.prestimulus_duration =
@@ -201,6 +204,9 @@ function create_trial(illusion_name = "Ponzo", type = "updown") {
             data: jsPsych.timelineVariable("data"),
             on_load: function () {
                 create_marker(marker_position)
+            },
+            on_start: function(){
+                (document.body.style.cursor = "none")
             },
             on_finish: function (data) {
                 document.querySelector("#marker").remove()
