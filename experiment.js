@@ -127,7 +127,7 @@ var make_break2 = {
 }
 
 // Marker
-var marker_position = [0, 0, 300, 300] // [0, 0, 100, 100]
+var marker_position = [0, 0, 200, 200] // [0, 0, 100, 100]
 function create_marker(marker_position, color = "black") {
     const html = `<div id="marker" style="position: absolute; background-color: ${color};\
     left:${marker_position[0]}; top:${marker_position[1]}; \
