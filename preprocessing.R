@@ -67,17 +67,37 @@ participants <- list.files(path)
 
 df <- data.frame()
 for (ppt in participants) {
-  if (ppt %in% c('sub-114', 'sub-117', 'sub-120')){
-    print(paste0('WARNING: NO FILE FOUND for ', ppt))
-  }
-  else{
+  # if (ppt %in% c('sub-114', 'sub-117', 'sub-120')){
+  #   print(paste0('WARNING: NO FILE FOUND for ', ppt))
+  # }
+  # else{
   raw<- list.files(paste0(path, ppt))
   raw<-raw[grep(".json", raw, fixed=T)]
   file_path = paste0(path, paste0(ppt, "/"))
   #print(paste0(file_path,raw))
   df <- rbind(df, preprocess_raw(file = paste0(file_path, raw)))
-  }
+  # }
 }
+
+# Manually fix for ppts without subject id 
+df$Subject_ID[df$Participant=='qh07hl'] <- 'sub-110'
+df$Subject_ID[df$Participant=='ld8429'] <- 'sub-111'
+df$Subject_ID[df$Participant=='wo5rw2'] <- 'sub-113'
+df$Subject_ID[df$Participant =='yuqm8t'] <- 'sub-114'
+df$Subject_ID[df$Participant =='khrdz6'] <- 'sub-117'
+df$Subject_ID[df$Participant =='6su1qc']<- 'sub-120'
+df$Subject_ID[df$Participant =='ltqvm8']<- 'sub-119'
+df$Subject_ID[df$Participant =='8pgdpu']<- 'sub-121'
+df$Subject_ID[df$Participant =='aqm2s1']<- 'sub-134'
+df$Subject_ID[df$Participant =='00fl9o']<- 'sub-116'
+df$Subject_ID[df$Participant =='1tavm8']<- 'sub-119'
+
+
+
+
+
+
+
 
 write.csv(df, "C:/Users/anshu/Documents/GitHub/IllusionGameEEG/data/data_beh.csv", row.names = FALSE)
 
