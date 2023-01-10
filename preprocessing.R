@@ -92,9 +92,9 @@ df$Subject_ID[df$Participant =='aqm2s1']<- 'sub-134'
 df$Subject_ID[df$Participant =='00fl9o']<- 'sub-116'
 df$Subject_ID[df$Participant =='1tavm8']<- 'sub-119'
 
-# fix trial event number 
+# fix event number 
 df$Trial_Order = df$Trial -18
-df<- df|> dplyr::mutate(Trial_Number = ifelse(df$Block==1, df$Trial_Order, df$Trial))
+df<- df|> dplyr::mutate(Event_Number = ifelse(df$Block==1, df$Trial_Order, df$Trial))
 df$Trial<- NULL
 df$Trial_Order<- NULL
 
