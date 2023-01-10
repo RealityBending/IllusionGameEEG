@@ -98,8 +98,9 @@ df$Subject_ID[df$Participant =='1tavm8']<- 'sub-119'
 
 
 
+# write.csv(df, "C:/Users/anshu/Documents/GitHub/IllusionGameEEG/data/data_beh.csv", row.names = FALSE)
+write.xlsx(df, "C:/Users/anshu/Documents/GitHub/IllusionGameEEG/data/data_beh.xlsx", row.names = FALSE)
 
-write.csv(df, "C:/Users/anshu/Documents/GitHub/IllusionGameEEG/data/data_beh.csv", row.names = FALSE)
 
 
 
