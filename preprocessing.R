@@ -23,7 +23,7 @@ preprocess_raw <- function(file) {
   trials <- tidyr::unnest(data=trials, cols= "response")
   
   df <- data.frame(
-   Subject_ID = ifelse(is.null(trials$subject_id), NA, paste0('sub-', trials$subject_id)),
+    Subject_ID = ifelse(is.null(trials$subject_id), NA, paste0('sub-', trials$subject_id)),
     Participant = trials$participant_id,
     Date = ifelse(is.null(info$date), NA, info$date),
     Time = ifelse(is.null(info$time), NA, info$time),
@@ -41,7 +41,7 @@ preprocess_raw <- function(file) {
     Trial = as.numeric(trials$trial_number),
     Stimulus = gsub(".png", "", gsub("stimuli/", "", trials$stimulus)),
     Illusion_Strength = as.numeric(trials$illusion_strength),
-   # Illusion_Effect = ifelse(sign(as.numeric(trials$illusion_strength)) == -1, "Congruent", ifelse(sign(as.numeric(trials$illusion_strength)) == 0, "Null", "Incongruent")),
+    # Illusion_Effect = ifelse(sign(as.numeric(trials$illusion_strength)) == -1, "Congruent", ifelse(sign(as.numeric(trials$illusion_strength)) == 0, "Null", "Incongruent")),
     Illusion_Direction = ifelse(sign(as.numeric(trials$illusion_strength)) == -1, "Congruent", "Incongruent"),
     Illusion_Side = as.factor(sign(as.numeric(trials$illusion_difference))),
     Illusion_Difference = abs(as.numeric(trials$illusion_difference)),
@@ -58,10 +58,10 @@ preprocess_raw <- function(file) {
   df$Illusion_Type <- ifelse(df$Illusion_Type == "VerticalHorizontal", "Vertical-Horizontal", df$Illusion_Type)
   
   df
-
+  
 }
 
-path<- "C:/Users/anshu/Dropbox/Studies/Data_IllusionGameEEG/Pilot/beh/"
+path<- "C:/Users/anshu/Dropbox/EEG Studies/IllusionGameEEG/rawdata/beh/"
 
 participants <- list.files(path)
 
@@ -84,7 +84,7 @@ df$Subject_ID[df$Participant=='qh07hl'] <- 'sub-110'
 df$Subject_ID[df$Participant=='ld8429'] <- 'sub-111'
 df$Subject_ID[df$Participant=='wo5rw2'] <- 'sub-113'
 df$Subject_ID[df$Participant =='yuqm8t'] <- 'sub-114'
-df$Subject_ID[df$Participant =='khrdz6'] <- 'sub-117'
+df$Subject_ID[df$Participant =='khrd26'] <- 'sub-117'
 df$Subject_ID[df$Participant =='6su1qc']<- 'sub-120'
 df$Subject_ID[df$Participant =='ltqvm8']<- 'sub-119'
 df$Subject_ID[df$Participant =='8pgdpu']<- 'sub-121'
