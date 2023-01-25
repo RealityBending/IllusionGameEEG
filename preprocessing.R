@@ -67,16 +67,17 @@ participants <- list.files(path)
 
 df <- data.frame()
 for (ppt in participants) {
-  # if (ppt %in% c('sub-114', 'sub-117', 'sub-120')){
-  #   print(paste0('WARNING: NO FILE FOUND for ', ppt))
-  # }
-  # else{
-  raw<- list.files(paste0(path, ppt))
-  raw<-raw[grep(".json", raw, fixed=T)]
-  file_path = paste0(path, paste0(ppt, "/"))
-  #print(paste0(file_path,raw))
-  df <- rbind(df, preprocess_raw(file = paste0(file_path, raw)))
-  # }
+  # Skip iterations for missing files
+  if (ppt %in% c('sub-117', 'sub-139', 'sub-146')){
+     print(paste0('WARNING: NO FILE FOUND for ', ppt))
+    next
+  } else{
+    raw<- list.files(paste0(path, ppt))
+    raw<-raw[grep(".json", raw, fixed=T)]
+    file_path = paste0(path, paste0(ppt, "/"))
+    #print(paste0(file_path,raw))
+    df <- rbind(df, preprocess_raw(file = paste0(file_path, raw)))
+  }
 }
 
 # Manually fix for ppts without subject id 
@@ -84,13 +85,15 @@ df$Subject_ID[df$Participant=='qh07hl'] <- 'sub-110'
 df$Subject_ID[df$Participant=='ld8429'] <- 'sub-111'
 df$Subject_ID[df$Participant=='wo5rw2'] <- 'sub-113'
 df$Subject_ID[df$Participant =='yuqm8t'] <- 'sub-114'
-df$Subject_ID[df$Participant =='khrd26'] <- 'sub-117'
+#df$Subject_ID[df$Participant =='khrd26'] <- 'sub-117'
 df$Subject_ID[df$Participant =='6su1qc']<- 'sub-120'
 df$Subject_ID[df$Participant =='ltqvm8']<- 'sub-119'
 df$Subject_ID[df$Participant =='8pgdpu']<- 'sub-121'
 df$Subject_ID[df$Participant =='aqm2s1']<- 'sub-134'
 df$Subject_ID[df$Participant =='00fl9o']<- 'sub-116'
 df$Subject_ID[df$Participant =='1tavm8']<- 'sub-119'
+df$Subject_ID[df$Participant=='khrdz6'] <- 'sub-123'
+
 
 # fix event number 
 df$Trial_Order = df$Trial -18
